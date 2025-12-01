@@ -1,0 +1,25 @@
+return
+{
+    "nvim-neo-tree/neo-tree.nvim",
+    priority = 100,
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "nvim-tree/nvim-web-devicons",
+    },
+    lazy = false, -- neo-tree will lazily load itself
+    init = function()
+      vim.api.nvim_create_autocmd("VimEnter", {
+        callback = function()
+          vim.cmd("Neotree show")
+        end,
+      })
+    end,
+    ---@type neotree.Config?
+    opts = {
+      auto_open_if_empty = true,
+      hijack_netrw = true,
+      open_files_do_not_close_tree = true,
+    }
+}
