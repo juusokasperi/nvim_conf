@@ -35,7 +35,7 @@ vim.keymap.set('n', '<Down>', '<C-w>j', {desc = 'Move to split below', silent = 
 vim.keymap.set('n', '<Left>', '<C-w>h', {desc = 'Move to split to the left', silent = true})
 vim.keymap.set('n', '<Right>', '<C-w>l', {desc = 'Move to split to the right', silent = true})
 vim.keymap.set('n', '<S-tab>', '<cmd>BufferLineCyclePrev<CR>', {desc = 'Previous buffer', silent = true})
--- vim.keymap.set('n', '<S-q>', '<cmd>BufferLineCycleNext<CR>', {desc = 'Next buffer', silent = true})
+vim.keymap.set('n', '<A-tab>', '<cmd>BufferLineCycleNext<CR>', {desc = 'Next buffer', silent = true})
 vim.keymap.set('n', '``', '<cmd>:Neotree toggle=true reveal=true<CR>', {desc = 'Toggle Neotree', silent = true})
 vim.keymap.set('n', '<Leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', {desc = 'Open diagnostic messages in a pop-up', silent = true})
 vim.keymap.set('n', '<Leader>r', '<cmd>set relativenumber!<CR>', {desc = 'Toggle relative line numbers', silent = true})
