@@ -34,7 +34,7 @@ vim.keymap.set('n', '<Up>', '<C-w>k', {desc = 'Move to split above', silent = tr
 vim.keymap.set('n', '<Down>', '<C-w>j', {desc = 'Move to split below', silent = true})
 vim.keymap.set('n', '<Left>', '<C-w>h', {desc = 'Move to split to the left', silent = true})
 vim.keymap.set('n', '<Right>', '<C-w>l', {desc = 'Move to split to the right', silent = true})
-vim.keymap.set('n', '<Leader>q', '<cmd>:q<CR>', {desc = "Close buffer", silent = true})
+vim.keymap.set('n', '<Leader>q', '<cmd>:bdelete<CR>', {desc = "Close buffer", silent = true})
 vim.keymap.set('n', '<S-tab>', '<cmd>BufferLineCyclePrev<CR>', {desc = 'Previous buffer', silent = true})
 vim.keymap.set('n', '<A-tab>', '<cmd>BufferLineCycleNext<CR>', {desc = 'Next buffer', silent = true})
 vim.keymap.set('n', '``', '<cmd>:Neotree toggle=true reveal=true<CR>', {desc = 'Toggle Neotree', silent = true})
