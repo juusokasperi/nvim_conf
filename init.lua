@@ -2,6 +2,7 @@ require("config.lazy")
 require("mason").setup()
 require("mason-lspconfig").setup()
 vim.opt.termguicolors = true
+vim.lsp.set_log_level("ERROR")
 require("tokyonight").setup({
 	style = "moon",
 	styles = {
