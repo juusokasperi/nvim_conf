@@ -27,7 +27,7 @@ return {
         mason_bin,
         "--background-index",
         "--clang-tidy",
-        "--log=verbose",
+        "--log=error",
 		"--query-driver=/usr/bin/clang,/usr/bin/clang++,/usr/bin/cc",
       },
       filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
