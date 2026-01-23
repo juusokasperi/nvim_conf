@@ -54,6 +54,13 @@ vim.api.nvim_create_autocmd("User", {
 	end
 })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*.go",
+	callback = function()
+		vim.lsp.buf.format()
+	end,
+})
+
 vim.keymap.set('n', '<Leader>t', function()
   -- Get current buffer's filetype
   local ft = vim.bo.filetype

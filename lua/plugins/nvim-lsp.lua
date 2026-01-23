@@ -8,7 +8,7 @@ return {
     dependencies = { "williamboman/mason.nvim" },
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "clangd", "texlab" },
+        ensure_installed = { "clangd", "texlab", "gopls" },
       })
     end,
   },
@@ -50,6 +50,7 @@ return {
 
 	vim.lsp.enable("texlab")
     vim.lsp.enable("clangd")
+	vim.lsp.enable("gopls")
 
     vim.api.nvim_create_autocmd("LspAttach", {
       callback = function(args)
@@ -60,15 +61,13 @@ return {
 			vim.keymap.set("n", "<Leader>K", "<plug>(vimtex-doc-package)", { desc = "VimTex: package docs", buffer = args.buf, silent = true })
 		end
         
-        if client.name == "clangd" then
-          local tb = require("telescope.builtin")
-          local opts = { buffer = args.buf }
+        local tb = require("telescope.builtin")
+         local opts = { buffer = args.buf }
           
-          vim.keymap.set("n", "gd", tb.lsp_definitions, { desc = "Go to definition", buffer = args.buf })
-          vim.keymap.set("n", "gr", tb.lsp_references, { desc = "References", buffer = args.buf })
-          vim.keymap.set("n", "gi", tb.lsp_implementations, { desc = "Implementations", buffer = args.buf })
-          vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover", buffer = args.buf })
-        end
+         vim.keymap.set("n", "gd", tb.lsp_definitions, { desc = "Go to definition", buffer = args.buf })
+         vim.keymap.set("n", "gr", tb.lsp_references, { desc = "References", buffer = args.buf })
+         vim.keymap.set("n", "gi", tb.lsp_implementations, { desc = "Implementations", buffer = args.buf })
+         vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover", buffer = args.buf })
       end,
     })
   end,
