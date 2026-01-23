@@ -8,7 +8,7 @@ return {
     dependencies = { "williamboman/mason.nvim" },
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "clangd" },
+        ensure_installed = { "clangd", "texlab" },
       })
     end,
   },
@@ -34,12 +34,31 @@ return {
       root_markers = { ".git", "compile_commands.json", ".clangd" },
     })
 
+	vim.lsp.config("texlab", {
+		filetypes = { "tex", "plaintex", "bib" },
+		settings = {
+			texlab = {
+				diagnostics = {
+					ignoredPatterns = {
+						"Overfull",
+						"Underfull",
+					},
+				},
+			},
+		},
+	})
+
+	vim.lsp.enable("texlab")
     vim.lsp.enable("clangd")
 
     vim.api.nvim_create_autocmd("LspAttach", {
       callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
         if not client then return end
+
+		if client.name == "texlab" then
+			vim.keymap.set("n", "<Leader>K", "<plug>(vimtex-doc-package)", { desc = "VimTex: package docs", buffer = args.buf, silent = true })
+		end
         
         if client.name == "clangd" then
           local tb = require("telescope.builtin")
