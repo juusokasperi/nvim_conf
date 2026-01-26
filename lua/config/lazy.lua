@@ -43,6 +43,7 @@ vim.keymap.set('n', '<Leader>r', '<cmd>set relativenumber!<CR>', {desc = 'Toggle
 vim.keymap.set('n', '<Leader>p', '"0p', {desc = 'Yank from zero register', silent = true})
 vim.keymap.set({'n', 'v'}, '<Leader>y', '"+y', {desc = 'Yank to clipboard', silent = true})
 
+
 vim.api.nvim_create_autocmd("User", {
 	pattern = "VeryLazy",
 	callback = function()
@@ -52,6 +53,14 @@ vim.api.nvim_create_autocmd("User", {
 		vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 		vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 	end
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "go",
+	callback = function()
+		vim.opt_local.indentkeys:remove("<:>")
+		vim.opt_local.indentkeys:remove(":")
+	end,
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
