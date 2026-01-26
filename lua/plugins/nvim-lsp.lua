@@ -62,12 +62,12 @@ return {
 		end
         
         local tb = require("telescope.builtin")
-         local opts = { buffer = args.buf }
+        local opts = { buffer = args.buf }
           
-         vim.keymap.set("n", "gd", tb.lsp_definitions, { desc = "Go to definition", buffer = args.buf })
-         vim.keymap.set("n", "gr", tb.lsp_references, { desc = "References", buffer = args.buf })
-         vim.keymap.set("n", "gi", tb.lsp_implementations, { desc = "Implementations", buffer = args.buf })
-         vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover", buffer = args.buf })
+        vim.keymap.set("n", "gd", tb.lsp_definitions, { desc = "Go to definition", buffer = args.buf })
+        vim.keymap.set("n", "gr", tb.lsp_references, { desc = "References", buffer = args.buf })
+        vim.keymap.set("n", "gi", tb.lsp_implementations, { desc = "Implementations", buffer = args.buf })
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover", buffer = args.buf })
       end,
     })
   end,
